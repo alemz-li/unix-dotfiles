@@ -6,7 +6,7 @@ local _M = {
   editor = os.getenv("EDITOR") or 'nvim',
 
   -- user defined wallpaper
-  wallpaper = home .. "/.dotfiles/.config/awesome/wp.jpg",
+  wallpaper = home .. "/.dotfiles/.config/awesome/theme/wp.jpg",
 }
 
 return _M
