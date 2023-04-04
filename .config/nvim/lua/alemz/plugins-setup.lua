@@ -112,6 +112,11 @@ return packer.startup(function(use)
 	use("NvChad/nvim-colorizer.lua")
 	use("nvim-colortils/colortils.nvim")
 
+	-- undotree
+	use("mbbill/undotree")
+
+	-- fugitive
+	use("tpope/vim-fugitive")
 	-- alpha
 	use({
 		"goolord/alpha-nvim",
