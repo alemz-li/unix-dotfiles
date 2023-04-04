@@ -86,7 +86,7 @@ lspconfig["tailwindcss"].setup({
 lspconfig["emmet_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte", "astro" },
 })
 
 -- configure lua server (with special settings)
@@ -108,4 +108,10 @@ lspconfig["lua_ls"].setup({
 			},
 		},
 	},
+})
+
+-- configure tailwindcss server
+lspconfig["prismals"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
