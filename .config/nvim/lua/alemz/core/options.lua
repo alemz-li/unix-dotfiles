@@ -23,7 +23,7 @@ opt.cursorline = true
 -- appearance
 opt.termguicolors = true
 -- opt.background = "dark"
-vim.g.nightflyTransparent = true
+-- vim.g.nightflyTransparent = true
 opt.signcolumn = "yes"
 
 -- backspace
