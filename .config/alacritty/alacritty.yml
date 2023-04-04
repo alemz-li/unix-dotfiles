@@ -28,7 +28,8 @@ window:
     columns: 100
     lines: 20
 
-  opacity: 0.75
+  # opacity: 0.75
+  opacity: 1
 
   # Window position (changes require restart)
   #
