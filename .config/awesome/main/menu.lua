@@ -4,7 +4,7 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Theme handling library
 local beautiful = require("beautiful") -- for awesome.icon
 
-local M = {}  -- menu
+local M = {} -- menu
 local _M = {} -- module
 
 -- reading
@@ -23,43 +23,52 @@ local editor_cmd = terminal .. " -e " .. editor
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 M.awesome = {
-  { "hotkeys", function() 
-      hotkeys_popup.show_help(nil, awful.screen.focused()) 
-    end },
-  { "manual", terminal .. " -e man awesome" },
-  { "edit config", editor_cmd .. " " .. awesome.conffile },
-  { "Terminal", terminal },
-  { "Shutdown/Logout", "oblogout" },
-  { "restart", awesome.restart },
-  { "quit", function() awesome.quit() end }
+	{
+		"hotkeys",
+		function()
+			hotkeys_popup.show_help(nil, awful.screen.focused())
+		end,
+	},
+	{ "manual", terminal .. " -e man awesome" },
+	{ "edit config", editor_cmd .. " " .. awesome.conffile },
+	{ "restart", awesome.restart },
+	{
+		"quit",
+		function()
+			awesome.quit()
+		end,
+	},
+}
+
+M.system = {
+	{ "suspend", "systemctl suspend" },
+	{ "shut down", "poweroff" },
 }
 
 M.favorite = {
-    { "firefox", "firefox", awful.util.getdir("config") .. "/firefox.png" },
-    {"flameshot", "flameshot"}
-}
-
-M.network_main = {
-  { "wicd-curses", "wicd-curses" },
-  { "wicd-gtk", "wicd-gtk" }
+	{ "discord", "discord" },
+	{ "firefox", "firefox", awful.util.getdir("config") .. "/firefox.png" },
+	{ "flameshot", "flameshot" },
 }
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 function _M.get()
+	-- Main Menu
+	local menu_items = {
+		{ "awesome", M.awesome, beautiful.awesome_subicon },
+		{ "open terminal", terminal },
+		{ "favorite", M.favorite },
+		{ "system", M.system },
+	}
 
-  -- Main Menu
-  local menu_items = {
-    { "awesome", M.awesome, beautiful.awesome_subicon },
-    { "open terminal", terminal },
-    { "network", M.network_main },
-    { "favorite", M.favorite }
-  }
-
-  return menu_items
+	return menu_items
 end
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-return setmetatable({}, { __call = function(_, ...) return _M.get(...) end })
-
+return setmetatable({}, {
+	__call = function(_, ...)
+		return _M.get(...)
+	end,
+})

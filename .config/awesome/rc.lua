@@ -92,7 +92,7 @@ awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
 -- }}}
 
 -- {{{ Signals
--- require("main.signals")
+require("main.signals")
 -- }}}
 
 awful.spawn.with_shell("picom --experimental-backends")
